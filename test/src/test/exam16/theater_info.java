@@ -13,18 +13,20 @@ class theater_info {
 		Scanner sc = new Scanner(System.in);
 
 		movie = exam16.movie;
-		if ("ï¿½ä¸£".equals(this.getmovie())) {
+		if ("Åä¸£¸£".equals(this.getmovie())) {
 			this.m = 1;
-		} else if ("ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".equals(this.getmovie())) {
+		} else if ("¹üÁË¿ÍÀÇ ÀüÀï".equals(this.getmovie())) {
 			this.m = 2;
-		} else if ("ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½".equals(this.getmovie())) {
+		} else if ("Æ÷ÄÏ¸ó½ºÅÍ".equals(this.getmovie())) {
 			this.m = 3;
-		} else if ("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".equals(this.getmovie())) {
+		} else if ("³¡±îÁö°£´Ù".equals(this.getmovie())) {
 			this.m = 4;
 		}
 
 		time = exam16.time;
-		if ("10:00".equals(this.gettime())) {
+		if ("10:00".equals(this.gettime()))
+
+		{
 			this.t = 1;
 		} else if ("14:00".equals(this.gettime())) {
 			this.t = 2;
