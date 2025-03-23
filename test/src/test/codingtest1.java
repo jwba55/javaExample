@@ -1,7 +1,6 @@
 package test;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class codingtest1 {
@@ -14,7 +13,7 @@ public class codingtest1 {
 		int h;
 		int outBox;
 		int box;
-		int num = 0;
+		int num = 1;
 		int i;
 		int j;
 		int response = 1;
@@ -42,7 +41,7 @@ public class codingtest1 {
 					}
 				}
 
-				for (; 1 <= repeat && repeat < h; repeat++) { // repeat의 숫자만큼 반복시키고 repeat를 기준으로 몇번째 열인지 확인하고 열이 바뀔때 마다
+				for (repeat = 1; 1 < repeat && repeat < h; repeat++) { // repeat의 숫자만큼 반복시키고 repeat를 기준으로 몇번째 열인지 확인하고 열이 바뀔때 마다
 					// 몇번째 열이지 어떻게 확인할 것인가? 첫번째 숫자를 기준으로 오름차순 혹은 내림차순으로 배열을 정리하도록 한다.
 					// 홀수인지 짝수인지 확인하여 repeat가 홀수이면 오름차순 정렬, repeat가 짝수이면 내림차순 정렬
 
@@ -51,10 +50,10 @@ public class codingtest1 {
 						Arrays.sort(arr[currentRepeat]); // 오름차순 정렬
 					} else if (currentRepeat % 2 == 0) {
 						Arrays.sort(arr[currentRepeat]);
-						for (j = 0; j < w / 2; j++) { // 내림차순 정렬 (배열 반전)
-							int temp = arr[currentRepeat][j];
-							arr[currentRepeat][j] = arr[currentRepeat][w - j - 1];
-							arr[currentRepeat][w - j - 1] = temp;
+						for (int p = 0; p < w / 2; p++) { // 내림차순 정렬 (배열 반전)
+							int temp = arr[currentRepeat][p];
+							arr[currentRepeat][p] = arr[currentRepeat][w - p - 1];
+							arr[currentRepeat][w - p - 1] = temp;
 						}
 					} else {
 						System.out.println("에외 처리");
@@ -68,21 +67,23 @@ public class codingtest1 {
 				if (0 < outBox && outBox <= n) {
 					int[] boxNum = new int[outBox];
 
-					for (; outBox >= 1; outBox--) {
+					for (int p = 0; p < outBox; p++) {
 						System.out.println("꺼낼 택배의 번호를 입력해주세요");
-						boxNum[outBox] = sc.nextInt();
+						boxNum[p] = sc.nextInt();
 					}
 					System.out.println("@@@@@@@@@@@@@@@@@@");
 					// 입력받은 택배의 위치를 확인하고 택배 꺼내기
-					for (i = 0; i < outBox;) {
-						box = boxNum[i];
+					for (int k = 0; k < outBox; k++) {// 꺼낼 택배번호들이 담긴 배열
 						System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-						for (; i < h; i++) { // 꺼내기로 한 택배의 수 만큼 반복
+						box = boxNum[k];
+						System.out.println(box);
+
+						for (i = 0; i < h; i++) { // 꺼내기로 한 택배의 수 만큼 반복
 							for (j = 0; j < w; j++) { // 가로 세로 열 확인
 								if (arr[i][j] == box) { // 입력받은 숫자가 해당 위치의 값과 일치하는지 확인
-									for (; i < h; i++) { // 최종 높이인지 확인 필요, 0의 총 개수 확인
-										if (arr[h - i][j] != 0) { // 최종 높이가 아닐 경우 해당 위치에 있는 택배가 비어있는지 확인 필요
-											arr[h - i][j] = 0; // 그 위치에 택배가 있을 경우 택배를 꺼냄
+									for (int o = 1; o < h; o++) { // 있으면 위에서부터 밑으로 가면서 택배꺼내기기
+										if (arr[h - o][j] != 0) { // 택배가 비어있는지 확인 필요-위에서부터 꺼내도록
+											arr[h - o][j] = 0; // 그 위치에 택배가 있을 경우 택배를 꺼냄
 											num++; // 꺼낸 택배의 수를 저장
 										}
 									}
